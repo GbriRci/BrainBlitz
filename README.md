@@ -1,3 +1,6 @@
+BRAIN BLITZ: il gioco è la chiave dell'apprendimento.
+Sofia Caroli, Anna Passini, Gabriele Ricci
+
 L’idea iniziale:
 La primissima idea era quella di creare un gioco a quiz su un server web con Node, Vite, Vue ed Express. Utilizzando un database di supporto avremmo gestito l'accesso degli utenti, i rapporti di amicizia tra di loro e tutte le domande con relative risposte. Non ci siamo discostati troppo dalla nostra idea di partenza, ma abbiamo aggiunto mano a mano delle features per renderlo più piacevole e accattivante.
 A progetto terminato, gli utenti accedono tramite un username univoco e una password; il profilo può successivamente essere personalizzato con un’immagine. È possibile inviare richieste di amicizia ad altri giocatori conoscendone l’username. Ci saranno più modalità di gioco per rendere sempre nuovo e interessante il sito. Le domande sono divise in categorie in base all'argomento e sono di due tipi: scelta multipla e vero/falso. Ogni domanda possiede una spiegazione aggiuntiva alla risposta corretta.

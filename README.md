@@ -1,5 +1,4 @@
-BRAIN BLITZ: il gioco è la chiave dell'apprendimento.
-Sofia Caroli, Anna Passini, Gabriele Ricci
+"BRAIN BLITZ: il gioco è la chiave dell'apprendimento." by Sofia Caroli, Anna Passini, Gabriele Ricci
 
 L’idea iniziale:
 La primissima idea era quella di creare un gioco a quiz su un server web con Node, Vite, Vue ed Express. Utilizzando un database di supporto avremmo gestito l'accesso degli utenti, i rapporti di amicizia tra di loro e tutte le domande con relative risposte. Non ci siamo discostati troppo dalla nostra idea di partenza, ma abbiamo aggiunto mano a mano delle features per renderlo più piacevole e accattivante.

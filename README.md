@@ -1,4 +1,4 @@
-# 💡Idea 
+# 🧠BrainBlitz
 Il progetto nasce dalla collabolazione con [sofcaroli2](https://github.com/sofcaroli2) e [Anapaxx](https://github.com/Anapaxx).
 La primissima idea era quella di creare un gioco a quiz su un server web con Node, Vite, Vue ed Express. 
 Utilizzando un database di supporto avremmo gestito l'accesso degli utenti, i rapporti di amicizia tra di 

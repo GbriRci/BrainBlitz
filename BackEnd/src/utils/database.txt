@@ -1,0 +1,747 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Creato il: Feb 03, 2025 alle 11:36
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+CREATE DATABASE bb;
+
+USE bb;
+
+--
+-- Database: `bb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `achievement`
+--
+
+CREATE TABLE `achievement` (
+  `Username` varchar(10) NOT NULL,
+  `IDBadge` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `amici`
+--
+
+CREATE TABLE `amici` (
+  `Username1` varchar(10) NOT NULL,
+  `Username2` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `amici`
+--
+
+INSERT INTO `amici` (`Username1`, `Username2`) VALUES
+('chiara', 'anapaxx'),
+('chiara', 'gbry'),
+('chiara', 'sofcaroli');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `badge`
+--
+
+CREATE TABLE `badge` (
+  `IDBadge` int(2) NOT NULL,
+  `Nome` varchar(25) DEFAULT NULL,
+  `Missione` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `badge`
+--
+
+INSERT INTO `badge` (`IDBadge`, `Nome`, `Missione`) VALUES
+(1, 'Principiante', 'Rispondi correttamente a 2 domande di fila in una partita.'),
+(2, 'Average', 'Rispondi correttamente a 4 domande in una partita.'),
+(3, 'Ottimo Lavoro!', 'Rispondi correttamente a 4 domande di fila in una partita.'),
+(4, 'Big Streak', 'Rispondi correttamente a tutte le domande in una partita.'),
+(5, 'Affezzionato', 'Gioca 30 partite.'),
+(6, 'Vincente', 'Vinci 15 partite.'),
+(7, 'Slayer', 'Vinci 50 partite.'),
+(8, 'Assatanato', 'Vinci 200 partite.'),
+(9, 'No Te Preocupes', 'Sbaglia tutte le domande in una partita.'),
+(10, 'Better Luck Next Time', 'Perdi 20 partite.');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `IDCategoria` int(1) NOT NULL,
+  `Nome` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `categorie`
+--
+
+INSERT INTO `categorie` (`IDCategoria`, `Nome`) VALUES
+(1, 'Storia'),
+(2, 'Geografia'),
+(3, 'Scienze'),
+(4, 'Arte'),
+(5, 'Sport'),
+(6, 'Megamix');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `domande`
+--
+
+CREATE TABLE `domande` (
+  `IDDomanda` int(3) NOT NULL,
+  `Testo` varchar(200) DEFAULT NULL,
+  `Spiegazione` varchar(250) DEFAULT NULL,
+  `Categoria` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `domande`
+--
+
+INSERT INTO `domande` (`IDDomanda`, `Testo`, `Spiegazione`, `Categoria`) VALUES
+(1, 'Augusto fu l\'imperatore romano durante la nascita di Gesù Cristo.', 'Augusto governò dal 44 a.C fino al 14 d.C., e quel periodo storico viene definito \"Età Augusta\".', 1),
+(2, 'Quale evento ha segnato l\'inizio della Prima Guerra Mondiale?', '​​La causa occasionale della prima guerra mondiale fu l\'eccidio di Sarajevo (28 giugno 1914), in cui trovarono la morte l\'arciduca ereditario d\'Austria Francesco Ferdinando e la moglie, per opera di uno studente irredentista serbo, Gavrilo Princip.', 1),
+(3, 'Amerigo Vespucci scoprì l\'America nel 1492.', 'L\'America venne scoperta da Cristoforo Colombo, ma fu Amerigo Vespucci a riconoscerla come nuova terra ancora inesplorata.', 1),
+(4, 'Quale trattato ha concluso la Seconda Guerra Mondiale?', 'Il trattato di Parigi fra l\'Italia e le potenze alleate è il trattato di pace, firmato a Parigi il 10 febbraio 1947 tra lo Stato italiano e le potenze vincitrici della seconda guerra mondiale, che mise formalmente fine alle ostilità.', 1),
+(5, 'Chi era il leader dell\'Unione Sovietica durante la crisi dei missili di Cuba?', 'Nikita Chruščёv governò dal 1958 al 1964, e fu lui a posizionare i missili a Cuba nel 1962. ', 1),
+(6, 'Quale civiltà ha costruito le piramidi di Giza?', 'La necropoli di Giza è, insieme a Saqqara e Tebe, il luogo di sepoltura più importante dell\'Antico Egitto. Le prime sepolture avvennero qui tra la I e la III dinastia.', 1),
+(7, 'Luigi XVI era il re di Francia durante la Rivoluzione Francese.', 'Luigi XVI di Borbone è stato re di Francia dal 1774 al 1792, ed era al potere quando, nel 1789, iniziò la Rivoluzione Francese.', 1),
+(8, 'Quale evento è avvenuto il 9 novembre del 1989?', 'La caduta del muro di Berlino ha luogo alla fine della guerra fredda (1989) e apre la via a un riavvicinamento di due tipi di società che si sono progressivamente allontanate l\'una dall\'altra.', 1),
+(9, 'La caduta dell\'Impero Romano d\'Occidente nel 476 d.C. segnò l\'inizio del Medioevo in Europa.', 'Questo periodo storico è caratterizzato dalla fusione di elementi culturali e politici romani con quelli germanici, influenzando la religione, la politica e la società dell\'epoca.', 1),
+(10, 'Quale impero è stato sconfitto nella battaglia di Waterloo?', 'La sconfitta dell\'ultima battaglia della Campagna di Waterloo segnò la fine di Napoleone quale Imperatore di Francia.', 1),
+(11, 'Chi era il presidente degli Stati Uniti durante la Guerra Civile Americana?', 'Abraham Lincoln fu il sedicesimo presidente degli Stati Uniti d\'America, dal 4 marzo 1861 fino alla sua uccisione, avvenuta nell\'aprile del 1865.', 1),
+(12, 'Quale evento ha segnato l\'inizio del Rinascimento?', 'L\'ultimo assedio di Costantinopoli, capitale dell\'Impero Romano d\'Oriente, avvenne nel 1453. I Turchi Ottomani, guidati dal sultano Maometto II, conquistarono la città il 29 maggio, dopo quasi due mesi di combattimenti.', 1),
+(13, 'Chi ha guidato la Rivoluzione Russa del 1917?', 'Fu primo ministro della Repubblica russa dal 1917 al 1918, della Repubblica Socialista Federativa Sovietica Russa dal 1918 al 1922 e dell\'Unione Sovietica dal 1922 al 1924.', 1),
+(14, 'Quale paese ha colonizzato l\'India fino al 1947?', '30 marzo 1948, dopo quasi un secolo di ininterrotto dominio coloniale, gli ultimi reparti coloniali britannici abbandonano l\'India in rispetto degli accordi presi da Lord Mountbatten.', 1),
+(15, 'Neville Chamberlain era il primo ministro britannico durante la Seconda Guerra Mondiale?', 'Winston Churchill fu un oratore e leader ispiratore che condusse la Gran Bretagna alla vittoria nella Seconda Guerra Mondiale. Servì due volte come primo ministro conservatore: dal 1940 al 1945 e dal 1951 al 1955.', 1),
+(16, 'Quale evento ha portato alla fine dell\'Impero Romano d\'Occidente?', 'Odoacre, in nome del suo esercito, fece la stessa richiesta a Oreste nelle terre italiane. Al suo rifiuto, il comandante sciro, acclamato re d\'Italia dalle sue truppe, assediò Oreste a Pavia e lo uccise. Ciò è dovuto al fatto che Romolo Augusto, non ', 1),
+(17, 'Chi ha fondato l\'Impero Mongolo?', 'Gengis Khan (nato nel 1162, vicino al Lago Baikal, Mongolia - morto il 18 agosto 1227) fu un sovrano guerriero mongolo, uno dei conquistatori più famosi della storia, che consolidò le tribù in una Mongolia unificata e poi estese il suo impero attrave', 1),
+(18, 'Quale trattato ha concluso la Guerra dei Trent\'anni?', 'La Pace di Vestfalia segnò la decadenza della Spagna, accrebbe la potenza di Svezia e Francia e riconobbe l\'indipendenza delle Province Unite dalla Spagna e della Confederazione svizzera dall\'Impero; ', 1),
+(19, 'Benito Mussolini era il leader della Germania nazista durante la Seconda Guerra Mondiale?', 'La Germania nazista durante la Seconda Guerra Mondiale era guidata da Adolf Hitler, mentre Benito Mussolini governava l\'Italia.', 1),
+(20, 'Quale evento ha segnato l\'inizio della Guerra Fredda?', 'Il presidente americano Harry Truman enuncia al Congresso quella che sarà chiamata “dottrina Truman”. Motivando il suo piano di aiuti per la Grecia e la Turchia, Truman dichiara che gli USA aiuteranno ogni popolo libero a resistere a tentativi di ass', 1),
+(21, 'Qual è il fiume più lungo del mondo?', 'Il maggior fiume dell\'Africa, primo del globo per lunghezza (6671 km), uno dei maggiori per ampiezza di bacino (2.867.000 km2).', 2),
+(22, 'In quale continente si trova il deserto del Sahara?', 'Il deserto del Sahara è più vasto deserto del globo, e si estende attraverso l\'intero continente africano dall\'Atlantico al Mar Rosso, appena interrotto dalla stretta fascia irrigata dalle acque del Nilo.', 2),
+(23, 'Qual è la capitale del Giappone?', 'Tokyo è oggi una delle grandi città mondiali: non soltanto perché è capitale del Giappone, seconda potenza economica della Terra, ma anche perché è una \'città del presente\', che ha continuamente aggiornato la sua struttura urbana.', 2),
+(24, 'La Cina è il paese con la maggiore popolazione al mondo.', 'Nel 2023 l\'India diventa il paese più popoloso del mondo con un miliardo e 429 milioni di abitanti, superando di qualche milione la Cina e veleggiando veloce verso il traguardo del miliardo e mezzo.', 2),
+(25, 'Qual è la montagna più alta del mondo?', 'Il monte Everest è la vetta più alta della Terra con la sua altezza di 8 848 metri. Assieme ad altri \"ottomila\" è situato nella catena dell\'Himalaya, al confine fra Nepal e Cina, e rientra nelle cosiddette Sette vette del pianeta. 8 848,86 m s.l.m.', 2),
+(26, 'In quale oceano si trova l\'isola di Madagascar?', 'Il Madagascar è uno stato insulare che comprende l\'isola del Madagascar e numerose isole periferiche minori. Situata al largo della costa sud-orientale dell\'Africa, immersa nell\'Oceano Indiano.', 2),
+(27, 'Il Mar Caspio è il lago più grande del mondo per superficie.', 'Il Mar Caspio è il corpo idrico senza sbocco sul mare più grande del mondo, considerato allo stesso tempo il lago più grande e uno tra i mari più piccoli. Ha infatti un\'estensione, una profondità e una salinità superiore a quella di un lago, ma essen', 2),
+(28, 'Quale paese è famoso per i suoi fiordi?', 'Il Nærøyfjord e il Geirangerfjord, tra i più lunghi e profondi, sono i fiordi norvegesi più famosi e sono stati inseriti nell’elenco del Patrimonio Mondiale dall’Unesco per la loro eccezionale bellezza naturale.', 2),
+(29, 'Qual è la capitale dell\'Australia?', 'Canberra è la capitale dell\'Australia, nell\'entroterra della costa sud-orientale del paese. Circondata da foreste, terreni agricoli e riserve naturali, si è guadagnata il soprannome di \"Capitale del Bush\".', 2),
+(30, 'In quale continente si trova l\'Amazzonia?', 'La foresta amazzonica si estende su una superficie di 6,5 milioni di km². Si sviluppa sul territorio di ben nove Stati sudamericani ed è la foresta pluviale più grande rimasta sulla Terra.', 2),
+(31, 'Qual è il deserto più grande del mondo?', 'il deserto del Sahara è il più famoso del mondo è anche il più esteso: oltre nove milioni di chilometri quadrati, in continua estensione a causa anche dei cambiamenti climatici.', 2),
+(32, 'La Cina è paese con la maggiore estensione territoriale.', 'Con una superficie di 17.098.242 km2, la Russia è di gran lunga lo Stato più esteso al mondo; mentre la Cina si estende per 9.597 milioni di km².', 2),
+(33, 'Qual è la capitale del Canada?', 'Ottawa è la capitale del Canada, nella parte orientale dell\'Ontario meridionale, vicino alla città di Montréal e al confine con gli Stati Uniti; è situata sul fiume Ottawa.', 2),
+(34, 'In quale continente si trova il Monte Kilimanjaro?', 'Il Monte Kilimanjaro è un vulcano dormiente in Tanzania. È la montagna più alta dell\'Africa e la montagna isolata più alta del mondo sopra il livello del mare, con i suoi 5.895 m sopra il livello del mare e 4.900 m sopra la base dell\'altopiano.', 2),
+(35, 'Qual è il fiume più lungo d\'Europa?', 'Il Volga è il fiume più lungo d\'Europa e il bacino endoreico più lungo del mondo. Situato in Russia, ha una lunghezza di 3.531 km e un bacino idrografico di 1.360.000 km².', 2),
+(36, 'Quale paese è famoso per le sue piramidi antiche?', 'Situate sull\'omonimo altopiano, a 18 chilometri dal Cairo, le piramidi di Giza non sono solo il monumento più importante d\'Egitto, ma anche il più antico del mondo.', 2),
+(37, 'Qual è la capitale della Russia?', 'Mosca, sul fiume Moscova nella Russia occidentale, è la capitale cosmopolita della nazione. Nel suo nucleo storico si trova il Cremlino, un complesso che ospita il presidente. Fuori dalle sue mura si trova la Piazza Rossa, centro simbolico della Russ', 2),
+(38, 'In quale continente si trova il fiume Nilo?', 'Il Nilo scorre verso nord nell\'Africa nord-orientale. E\' il fiume più lungo dell\'Africa. Storicamente è stato considerato il fiume più lungo del mondo, anche se il Rio delle Amazzoni sia leggermente più lungo.', 2),
+(39, 'La Groenlandia è l\'isola più grande del mondo.', 'La Groenlandia è la più estesa terra artica e la maggiore isola della Terra (2.175.600 km2, comprese 44.800 delle isole costiere). È posta fra l’Arcipelago artico canadese e l’Islanda. ', 2),
+(40, 'Quale paese è famoso per la Torre Eiffel?', 'La Torre Eiffel è il simbolo internazionale di Parigi, della Francia e del romanticismo. Gustav Eiffel la progettò per l\'esposizione universale del 1889, non sapendo che sarebbe diventata un simbolo a livello globale.', 2),
+(41, 'Qual è la formula chimica dell\'acqua?', 'Due atomi di idrogeno e uno di ossigeno: un composto chimico, H2O, la cui semplice formula è quella che tutti impariamo a conoscere sin da bambini.', 3),
+(42, 'Chi ha formulato la teoria della relatività?', 'Parlando di \"teoria della relatività\" si fa riferimento alla teoria della relatività speciale e generale che Einstein ha elaborato tra il 1905 e il 1913. E = m*c^2.', 3),
+(43, 'Qual è l\'elemento chimico con il simbolo \"O\"?', 'L\'ossigeno è un elemento chimico con il simbolo O e il numero atomico 8. È un membro del gruppo calcogeno nella tavola periodica e un non metallo altamente reattivo.', 3),
+(44, 'Giove è conosciuto come il \"Pianeta Rosso\".', 'Marte è il quarto pianeta a partire dal Sole. La superficie di Marte è rosso-arancio perché è ricoperta di polvere di ossido di ferro, da cui il soprannome di \"pianeta rosso\".', 3),
+(45, 'Chi ha scoperto la penicillina?', 'Nel 1928 che Alexander Fleming riesce a caratterizzare tramite il potere battericida di alcune muffe la penicillina, dando ufficialmente il via alla nascita degli antibiotici”.', 3),
+(46, 'Qual è la velocità della luce nel vuoto?', 'La velocità della luce nel vuoto, comunemente indicata con c, è una costante fisica universale. Secondo la teoria della relatività ristretta, c è il limite superiore della velocità con cui materia o energia convenzionale possono viaggiare nello spazi', 3),
+(47, 'Quale organo del corpo umano è responsabile della pompa del sangue?', 'Il cuore è come una pompa formata da quattro camere. Le due camere superiori si chiamano atri, e agiscono come serbatoi. Raccolgono e contengono il sangue fino a quando viene fatto fluire nelle camere principali della pompa, i ventricoli.', 3),
+(48, 'Chi ha formulato le leggi del moto?', 'Newton, nella sua opera Philosophiae Naturalis Principia Mathematica (nota anche come Principia) del 1687, segna la fine della rivoluzione scientifica e definisce le regole fondamentali della meccanica classica attraverso le sue leggi del moto.', 3),
+(49, 'L\'acido desossiribonucleico è la molecola principale che compone il DNA.', 'L\'acido desossiribonucleico o deossiribonucleico è l\'acido nucleico che contiene le informazioni genetiche per lo sviluppo, l\'omeostasi e la riproduzione di tutti gli esseri viventi conosciuti.', 3),
+(50, 'Quale gas è essenziale per la respirazione umana?', 'La produzione di energia attraverso la respirazione cellulare richiede un rifornimento continuo di ossigeno. Il sistema respiratorio preleva l\'ossigeno dall\'ambiente ed eliminando l\'anidride carbonica dall\'organismo.', 3),
+(51, 'Chi ha scoperto la legge di gravitazione universale?', 'La legge di g. universale, la cui scoperta è dovuta a I. Newton (1687), dà ragione del moto dei pianeti intorno al Sole e dei satelliti intorno ai pianeti, ecc., e costituisce pertanto la base di tutta la dinamica cosmica.', 3),
+(52, 'Giove è il pianeta più grande del sistema solare?', 'Giove, il quinto pianeta in ordine di distanza dal Sole, è certamente il gigante del Sistema solare, talmente grande che potrebbe contenere la Terra al suo interno 1.300 volte.', 3),
+(53, 'Quale scienziato ha sviluppato la teoria dell\'evoluzione?', 'Nel novembre del 1859, Darwin pubblicò il suo famoso libro “Sull\'origine delle specie”, in cui descrive la sua Teoria dell\'evoluzione.', 3),
+(54, 'Qual è l\'unità di misura della corrente elettrica?', 'L\'unità di misura della corrente è l\'Ampere, come stabilito dal Sistema Internazionale (SI) e rappresenta il flusso delle cariche elettriche attraverso un conduttore, come ad esempio un filo di rame.', 3),
+(55, 'Quale organo del corpo umano è responsabile della digestione?', 'Lo stomaco è un organo dell\'apparato digerente situato tra l\'esofago e l\'intestino tenue che ha la funzione di immagazzinare il cibo e iniziarne la digestione.', 3),
+(56, 'Chi ha inventato il telefono?', 'Alexander Graham Bell era un inventore, scienziato e ingegnere canadese-americano di origine scozzese a cui è attribuito il brevetto del primo telefono pratico. Nel 1885 fondò anche l\'American Telephone and Telegraph Company.', 3),
+(57, 'Qual è la temperatura di ebollizione dell\'acqua a livello del mare?', 'Il grado di bollitura dell\'acqua sarà perfettamente di 100° se ci si trova al livello del mare, mentre in montagna, essendo la pressione atmosferica più bassa, la temperatura di ebollizione sarà inferiore ai 100°.', 3),
+(58, 'Quale elemento chimico ha il simbolo \"Fe\"?', 'Il ferro è un elemento chimico; ha come simbolo Fe e numero atomico 26. È, in termini di massa, l\'elemento più comune sulla Terra, formando gran parte del nucleo esterno ed interno della Terra.', 3),
+(59, 'Quale scienziato ha scoperto i raggi X?', 'Wilhelm Conrad Röntgen era un fisico tedesco che, l\'8 novembre 1895, produsse e rilevò radiazioni elettromagnetiche in una gamma di lunghezze d\'onda note come raggi X (raggi Rontgen), risultato che gli valse il primo Premio Nobel per la fisica nel 19', 3),
+(60, 'Qual è la distanza media tra la Terra e il Sole?', 'Nella sua orbita durante l\'anno, la Terra varia lievemente (con uno scarto pari a circa il 3,5%) la sua distanza dal Sole, da un minimo di circa 147 milioni di chilometri (perielio) a un massimo di circa 152 milioni di chilometri (afelio).', 3),
+(61, 'Chi ha dipinto la \"Gioconda\"?', 'La Gioconda, o Monna Lisa, è un ritratto a mezzo busto dell\'artista italiano Leonardo da Vinci. Considerato un capolavoro archetipico del Rinascimento italiano, è stato descritto come \"l\'opera d\'arte più conosciuta, e la più parodiata al mondo\"', 4),
+(62, 'Quale movimento artistico è associato a Pablo Picasso?', 'Il cubismo era caratterizzato dall\'uso di forme geometriche per rappresentare gli oggetti, spesso scomposti in più punti di vista. Artisti come Picasso e Braque cercavano di scomporre e rimontare oggetti e scene per evidenziarne la complessità intrin', 4),
+(63, 'Antonio Canova ha scolpito il \"David\".', 'Il David è un capolavoro della scultura in marmo del Rinascimento italiano creato dal 1501 al 1504 da Michelangelo. Con un\'altezza di 5,17 metri, il David fu la prima statua colossale in marmo realizzata nel pieno Rinascimento.', 4),
+(64, 'Quale opera è considerata il capolavoro di Michelangelo nella Cappella Sistina?', 'Il Giudizio Universale è un affresco che copre l\'intera parete dell\'altare della Cappella Sistina nella Città del Vaticano. È una rappresentazione della Seconda Venuta di Cristo e del giudizio finale ed eterno di Dio su tutta l\'umanità.', 4),
+(65, 'Quale artista è famoso per i suoi girasoli?', 'I Girasoli sono una serie di dipinti ad olio su tela realizzati nel 1888 dal pittore Vincent van Gogh. Tra i soggetti preferiti dal pittore, sono oggi tra le sue opere più riconoscibili e note presso il grande pubblico.', 4),
+(66, 'Vincent van Gogh ha dipinto \"La notte stellata\".', 'La notte stellata è un dipinto di Vincent van Gogh che raffigura la vista dalla finestra esposta a est della sua stanza di asilo a Saint-Rémy-de-Provence, poco prima dell\'alba, con l\'aggiunta di un villaggio immaginario.', 4),
+(67, 'Quale movimento artistico è associato a Claude Monet?', 'Claude Monet (1840-1926) è considerato uno dei più grandi pittori della storia dell\'arte e uno dei principali esponenti del movimento impressionista, una rivoluzione artistica che ha cambiato il modo di vedere e rappresentare il mondo.', 4),
+(68, 'Chi ha scolpito \"Il pensatore\"?', 'François Auguste René Rodin è stato uno scultore francese generalmente considerato il fondatore della scultura moderna. Rodin possedeva un\'abilità unica nel modellare nell\'argilla una superficie complessa, turbolenta e profondamente scavata.', 4),
+(69, 'Quale opera è considerata il capolavoro di Leonardo da Vinci?', 'La Gioconda, o Monna Lisa, è un ritratto a mezzo busto dell\'artista italiano Leonardo da Vinci. Considerato un capolavoro archetipico del Rinascimento italiano, è stato descritto come \"l\'opera d\'arte più conosciuta, e la più parodiata al mondo\"', 4),
+(70, 'Chi ha dipinto \"Guernica\"?', 'Guernica è l\'opera che emblematicamente rappresenta l\'impegno morale di Picasso nelle scelte democratiche e civili. Nell\'opera viene raccontato il \"bombardamento di Guernica\" (1937) durante la guerra civile spagnola  ', 4),
+(71, 'Quale movimento artistico è associato a Salvador Dalí?', 'Salvador Dalí era un artista nato nel 1904 a Figueres, in Spagna, ed è celebre per il suo contributo fondamentale al Surrealismo. Caratterizzato da uno stile di vita e un\'estetica eccentrici, Dalí ha esplorato temi come sogno, realtà, e subconscio.', 4),
+(72, 'Giotto ha dipinto \"La nascita di Venere\".', 'La nascita di Venere è un dipinto dell\'artista italiano Sandro Botticelli, probabilmente eseguito a metà degli anni ottanta del Quattrocento. Raffigura la dea Venere che arriva alla riva dopo la sua nascita, completamente adulta .', 4),
+(73, 'Quale artista è famoso per i suoi autoritratti?', 'Frida creava immagini in cui il tema ricorrente e fondamentale della sua opera è se stessa. Frida rappresentò il proprio volto in più di 55 lavori, auto-ritraendosi cercò di collocare se stessa nel punto d\'incontro dei vari livelli dell\'essere.', 4),
+(74, 'Chi ha dipinto \"Il bacio\"?', 'Il bacio è un dipinto con aggiunta di foglia d\'oro, argento e platino del pittore simbolista austriaco Gustav Klimt. Fu dipinto tra il 1907 e il 1908. Il dipinto raffigura una coppia che si abbraccia, i loro corpi intrecciati in elaborate vesti.', 4),
+(75, 'Quale movimento artistico è associato a Jackson Pollock?', 'Jackson Pollock, che è stato uno dei maggiori esponenti della action painting (pittura d\'azione), era solito lanciare i colori sulle tele, dipingeva facendo colare dall\'alto vernici e colori su superfici pittoriche di grandi dimensioni.', 4),
+(76, 'Michelangelo ha scolpito \"La Pietà\"?', 'La Pietà di Michelangelo è una scultura fatta in marmo realizzata da Michelangelo Buonarroti e conservata nella basilica di San Pietro in Vaticano. Rappresenta Maria nell\'accettazione della morte del figlio come parte della volontà divina.', 4),
+(77, 'Quale opera è considerata il capolavoro di Sandro Botticelli?', 'La nascita di Venere è un dipinto dell\'artista italiano Sandro Botticelli, probabilmente eseguito a metà degli anni ottanta del Quattrocento. Raffigura la dea Venere che arriva alla riva dopo la sua nascita, completamente adulta .', 4),
+(78, 'Chi ha dipinto \"La scuola di Atene\"?', 'La Scuola di Atene è un affresco dell\'artista rinascimentale italiano Raffaello. Fu dipinto tra il 1509 e il 1511 su commissione di Papa Giulio II per decorare le stanze oggi chiamate Stanze di Raffaello nel Palazzo Apostolico della Città del Vatican', 4),
+(79, 'Il Pop Art è il movimento artistico associato a Andy Warhol.', 'L\'uso di immagini della cultura popolare da parte di Warhol lo ha reso uno degli artisti pop più conosciuti. Il suo lavoro ha una qualità grafica piatta simile a quella che si trova nei media e nella pubblicità.', 4),
+(80, 'Chi ha dipinto \"L\'ultima cena\"?', 'L’Ultima Cena, nota anche con il nome di Cenacolo, dipinta da Da Vinci fra il 1494 e il principio del 1498, è considerato il dipinto murale più importante al mondo.', 4),
+(81, 'Quale paese ha vinto la Coppa del Mondo FIFA 2018?', 'La Francia vinse la Coppa del Mondo 2018 sconfiggendo la Croazia 4 a 2.', 5),
+(82, 'Chi ha vinto il maggior numero di titoli di Wimbledon nel singolare maschile?', 'Roger Federer è un ex tennista professionista svizzero. Ha vinto 103 titoli di singolare, inclusi 20 titoli di singolare maschile (tra cui un record di otto titoli di Wimbledon di singolare maschile).', 5),
+(83, 'Quale squadra di basket NBA ha vinto il maggior numero di campionati?', 'La squadra che ha vinto più titoli NBA in assoluto è quella dei Boston Celtics, che con la vittoria del titolo NBA 2023/24 è salita a 18, staccando i Los Angeles Lakers, fermi a 17 titoli.', 5),
+(84, 'Chi ha vinto il Tour de France nel 2020?', 'Lo sloveno Tadej Pogačar ha vinto il Tour de France del 2020. Ha battuto il danese Jonas Vingegaard di 1 minuto e 3 secondi durante una gara di 21 miglia che si è conclusa a Nizza, in Francia.', 5),
+(85, 'Usain Bolt ha vinto il maggior numero di medaglie olimpiche.', 'Il nuotatore statunitense Michael Phelps è lo sportivo più medagliato con 28 medaglie, record battuto inizialmente ai Giochi olimpici di Londra 2012 e poi migliorato a Rio de Janeiro 2016.', 5),
+(86, 'Quale squadra di calcio ha vinto la Champions League nel 2021?', 'La UEFA Champions League del 2021 è stata vinta dal Chelsea, battendo 1 a 0 Man City.', 5),
+(87, 'Chi è considerato il miglior giocatore di calcio di tutti i tempi?', 'Nel 2000, Pelé è stato votato Giocatore mondiale del secolo dalla Federazione internazionale di storia e statistica del calcio (IFFHS) ed è stato uno dei due vincitori congiunti del Premio FIFA Giocatore del secolo, insieme a Diego Maradona.', 5),
+(88, 'Quale paese ha ospitato le Olimpiadi del 2016?', 'I Giochi della XXXI Olimpiade si sono svolti a Rio de Janeiro, in Brasile, dal 5 al 21 agosto 2016 e rappresentano la prima edizione dei Giochi Olimpici in Sud America. Nell\'ambito dei Giochi si sono sfidati circa 10.500 atleti, da più di 200 Paesi.', 5),
+(89, 'Max Verstappen ha vinto il campionato di Formula 1 nel 2021.', 'Max Verstappen si aggiudica nel 2021 per la prima volta il titolo piloti dopo una lotta serrata con Lewis Hamilton. La Mercedes vince così il suo ottavo titolo costruttori consecutivo.', 5),
+(90, 'Quale squadra di baseball ha vinto le World Series nel 2020?', 'A causa delle restrizioni dovute alla pandemia, dopo che i Dodgers hanno sconfitto i Tampa Bay Rays in sei partite per il settimo campionato della franchigia, alla città è stata negata una parata.', 5),
+(91, 'Chi ha vinto il maggior numero di titoli del Grande Slam nel tennis femminile?', 'Serena Williams detiene un record di 367-56 singoli negli Slam. Le sue 367 vittorie in partite singole del Grande Slam sono un record dell\'era Open. ', 5),
+(92, 'Quale paese ha vinto il maggior numero di medaglie alle Olimpiadi invernali del 2018?', 'Il medagliere per Nazioni è stato vinto dalla Norvegia con 14 ori, 14 argenti e 11 bronzi, al secondo posto la Germania con 14 ori, 10 argenti e 7 bronzi e al terzo posto il Canada con 11 ori, 8 argenti e 10 bronzi.', 5),
+(93, 'Kareem Abdul-Jabbar è il giocatore di basket con il maggior numero di punti segnati nella storia dell\'NBA.', 'LeBron Jamescon, con 40.000 punti e il maggior numero di presenze all\'All Star Game, nel 2023, ha superato Kareem Abdul Jabbar diventando il miglior giocatore di tutti i tempi della NBA.', 5),
+(94, 'Quale squadra di calcio ha vinto la Premier League nel 2020?', 'La vittoria del campionato del Liverpool è stata matematicamente assicurata, quando il Manchester City, secondo in classifica, ha perso contro il Chelsea (2-1), rendendo impossibile per il City raggiungere il Liverpool in termini di punti.', 5),
+(95, 'Chi ha vinto il campionato mondiale di scacchi nel 2021?', 'Sven Magnus Øen Carlsen è un grande maestro di scacchi norvegese: è un cinque volte campione del mondo, cinque volte campione del mondo di scacchi rapidi, otto volte campione in carica del mondo di scacchi Blitz e campione in carica della Coppa del m', 5),
+(96, 'La Nuova Zelanda ha vinto il maggior numero di Coppe del Mondo di rugby.', 'Il campione in carica è il Sudafrica, che ha vinto l\'edizione più recente, quella del 2023. Gli Springboks sono, inoltre, la squadra più titolata del torneo con quattro vittorie. Seguono Nuova Zelanda (3), Australia (2) e Inghilterra (1).', 5),
+(97, 'Chi ha vinto il campionato di MotoGP nel 2021?', 'Fabio Alain Quartararo, soprannominato El Diablo, è un pilota motociclistico del Gran Premio di Francia. Dopo aver vinto il Campionato del Mondo MotoGP 2021, è il primo Campione del Mondo francese nella storia della classe regina.', 5),
+(98, 'Quale squadra di hockey su ghiaccio ha vinto la Stanley Cup nel 2021?', 'I playoff si sono conclusi con i Tampa Bay Lightning che hanno vinto la seconda Stanley Cup consecutiva e la terza assoluta nella storia della franchigia, sconfiggendo i Montreal Canadiens quattro partite a uno nelle finali della Stanley Cup.', 5),
+(99, 'Chi è il giocatore di golf con il maggior numero di vittorie nei tornei major?', 'Jack Nicklaus, soprannominato \"l\'Orso d\'Oro\", è ampiamente considerato uno dei più grandi golfisti di tutti i tempi. L\'americano ha infatti vinto 117 tornei professionistici nella sua carriera, e detiene il record di maggior vittorie, 18.', 5),
+(100, 'Gli Stati Uniti hanno vinto il maggior numero di medaglie alle Olimpiadi estive del 2020.', 'Gli USA hanno ottenuto ben 113 medaglie alle Olimpiadi estive del 2020, seguite da Cina (89), Giappone (58) e Gran Bretagna (64).', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `richieste`
+--
+
+CREATE TABLE `richieste` (
+  `Username1` varchar(10) NOT NULL,
+  `Username2` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `risposte`
+--
+
+CREATE TABLE `risposte` (
+  `IDRisposta` int(3) DEFAULT NULL,
+  `Testo` varchar(100) DEFAULT NULL,
+  `Correttezza` tinyint(1) DEFAULT NULL,
+  `IDDomanda` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `risposte`
+--
+
+INSERT INTO `risposte` (`IDRisposta`, `Testo`, `Correttezza`, `IDDomanda`) VALUES
+(1, 'VERO', 1, 1),
+(2, 'L\'attentato di Sarajevo', 1, 2),
+(3, 'FALSO', 1, 3),
+(4, 'Trattato di Parigi', 1, 4),
+(5, 'Nikita Chruščёv', 1, 5),
+(6, 'Gli Egizi', 1, 6),
+(7, 'VERO', 1, 7),
+(8, 'La caduta del Muro di Berlino', 1, 8),
+(9, 'VERO', 1, 9),
+(10, 'L\'Impero Francese', 1, 10),
+(11, 'Abraham Lincoln', 1, 11),
+(12, 'La caduta di Costantinopoli', 1, 12),
+(13, 'Vladimir Lenin', 1, 13),
+(14, 'Regno Unito', 1, 14),
+(15, 'FALSO', 1, 15),
+(16, 'La deposizione di Romolo', 1, 16),
+(17, 'Gengis Khan', 1, 17),
+(18, 'Trattato di Vestfalia', 1, 18),
+(19, 'FALSO', 1, 19),
+(20, 'La dottrina Truman', 1, 20),
+(21, 'Il Nilo', 1, 21),
+(22, 'Africa', 1, 22),
+(23, 'Tokyo', 1, 23),
+(24, 'FALSO', 1, 24),
+(25, 'Everest', 1, 25),
+(26, 'Oceano Indiano', 1, 26),
+(27, 'VERO', 1, 27),
+(28, 'Norvegia', 1, 28),
+(29, 'Canberra', 1, 29),
+(30, 'Sud America', 1, 30),
+(31, 'Il Sahara', 1, 31),
+(32, 'FALSO', 1, 32),
+(33, 'Ottawa', 1, 33),
+(34, 'Africa', 1, 34),
+(35, 'Il Volga', 1, 35),
+(36, 'Egitto', 1, 36),
+(37, 'Mosca', 1, 37),
+(38, 'Africa', 1, 38),
+(39, 'VERO', 1, 39),
+(40, 'Francia', 1, 40),
+(41, 'H₂O', 1, 41),
+(42, 'Albert Einstein', 1, 42),
+(43, 'Ossigeno', 1, 43),
+(44, 'FALSO', 1, 44),
+(45, 'Alexander Fleming', 1, 45),
+(46, 'Circa 299.792 km/s', 1, 46),
+(47, 'Cuore', 1, 47),
+(48, 'Isaac Newton', 1, 48),
+(49, 'VERO', 1, 49),
+(50, 'Ossigeno', 1, 50),
+(51, 'Isaac Newton', 1, 51),
+(52, 'VERO', 1, 52),
+(53, 'Charles Darwin', 1, 53),
+(54, 'Ampere', 1, 54),
+(55, 'Stomaco', 1, 55),
+(56, 'Alexander Graham Bell', 1, 56),
+(57, '100°C', 1, 57),
+(58, 'Ferro', 1, 58),
+(59, 'Wilhelm Conrad Röntgen', 1, 59),
+(60, '149,6 milioni di km', 1, 60),
+(61, 'Leonardo da Vinci', 1, 61),
+(62, 'Cubismo', 1, 62),
+(63, 'FALSO', 1, 63),
+(64, 'Il Giudizio Universale', 1, 64),
+(65, 'Vincent van Gogh', 1, 65),
+(66, 'VERO', 1, 66),
+(67, 'Impressionismo', 1, 67),
+(68, 'Auguste Rodin', 1, 68),
+(69, 'La Gioconda', 1, 69),
+(70, 'Pablo Picasso', 1, 70),
+(71, 'Surrealismo', 1, 71),
+(72, 'FALSO', 1, 72),
+(73, 'Frida Kahlo', 1, 73),
+(74, 'Gustav Klimt', 1, 74),
+(75, 'Espressionismo astratto', 1, 75),
+(76, 'VERO', 1, 76),
+(77, 'La nascita di Venere', 1, 77),
+(78, 'Raffaello Sanzio', 1, 78),
+(79, 'VERO', 1, 79),
+(80, 'Leonardo da Vinci', 1, 80),
+(81, 'Francia', 1, 81),
+(82, 'Roger Federer', 1, 82),
+(83, 'Los Angeles Lakers', 1, 83),
+(84, 'Tadej Pogačar', 1, 84),
+(85, 'FALSO', 1, 85),
+(86, 'Chelsea', 1, 86),
+(87, 'Pelé', 1, 87),
+(88, 'Brasile', 1, 88),
+(89, 'VERO', 1, 89),
+(90, 'Los Angeles Dodgers', 1, 90),
+(91, 'Serena Williams', 1, 91),
+(92, 'Norvegia', 1, 92),
+(93, 'FALSO', 1, 93),
+(94, 'Liverpool', 1, 94),
+(95, 'Magnus Carlsen', 1, 95),
+(96, 'FALSO', 1, 96),
+(97, 'Fabio Quartararo', 1, 97),
+(98, 'Tampa Bay Lightning', 1, 98),
+(99, 'Jack Nicklaus', 1, 99),
+(100, 'VERO', 1, 100),
+(101, 'FALSO', 0, 1),
+(102, 'La Rivoluzione Russa', 0, 2),
+(103, 'Il Trattato di Versailles', 0, 2),
+(104, 'L\'invasione della Polonia', 0, 2),
+(105, 'VERO', 0, 3),
+(106, 'Trattato di Versailles', 0, 4),
+(107, 'Trattato di Tordesillas', 0, 4),
+(108, 'Trattato di Utrecht', 0, 4),
+(109, 'Joseph Stalin', 0, 5),
+(110, 'Leonid Brezhnev', 0, 5),
+(111, 'Mikhail Gorbachev', 0, 5),
+(112, 'I Romani', 0, 6),
+(113, 'I Maya', 0, 6),
+(114, 'Gli Inca', 0, 6),
+(115, 'FALSO', 0, 7),
+(116, 'La fine della WWI', 0, 8),
+(117, 'La Rivoluzione Francese', 0, 8),
+(118, 'La Guerra di Corea', 0, 8),
+(119, 'FALSO', 0, 9),
+(120, 'L\'Impero Ottomano', 0, 10),
+(121, 'L\'Impero Bizantino', 0, 10),
+(122, 'L\'Impero Austro-Ungarico', 0, 10),
+(123, 'George Washington', 0, 11),
+(124, 'Thomas Jefferson', 0, 11),
+(125, 'Theodore Roosevelt', 0, 11),
+(126, 'La scoperta dell\'America', 0, 12),
+(127, 'La Riforma Protestante', 0, 12),
+(128, 'La Rivoluzione Industriale', 0, 12),
+(129, 'Joseph Stalin', 0, 13),
+(130, 'Leon Trotsky', 0, 13),
+(131, 'Nikita Krusciov', 0, 13),
+(132, 'Francia', 0, 14),
+(133, 'Portogallo', 0, 14),
+(134, 'Spagna', 0, 14),
+(135, 'VERO', 0, 15),
+(136, 'La battaglia di Hastings', 0, 16),
+(137, 'La guerra dei Cent\'anni', 0, 16),
+(138, 'La caduta di Costantinopoli', 0, 16),
+(139, 'Kublai Khan', 0, 17),
+(140, 'Timur', 0, 17),
+(141, 'Attila', 0, 17),
+(142, 'Trattato di Versailles', 0, 18),
+(143, 'Trattato di Utrecht', 0, 18),
+(144, 'Trattato di Tordesillas', 0, 18),
+(145, 'VERO', 0, 19),
+(146, 'La Rivoluzione Russa', 0, 20),
+(147, 'La Guerra di Corea', 0, 20),
+(148, 'La crisi di Suez', 0, 20),
+(149, 'Il Mississippi', 0, 21),
+(150, 'Il Danubio', 0, 21),
+(151, 'Il Gange', 0, 21),
+(152, 'Asia', 0, 22),
+(153, 'America del Sud', 0, 22),
+(154, 'Europa', 0, 22),
+(155, 'Pechino', 0, 23),
+(156, 'Seul', 0, 23),
+(157, 'Bangkok', 0, 23),
+(158, 'VERO', 0, 24),
+(159, 'K2', 0, 25),
+(160, 'Kangchenjunga', 0, 25),
+(161, 'Monte Bianco', 0, 25),
+(162, 'Oceano Atlantico', 0, 26),
+(163, 'Oceano Pacifico', 0, 26),
+(164, 'Oceano Artico', 0, 26),
+(165, 'FALSO', 0, 27),
+(166, 'Svezia', 0, 28),
+(167, 'Finlandia', 0, 28),
+(168, 'Danimarca', 0, 28),
+(169, 'Sydney', 0, 29),
+(170, 'Melbourne', 0, 29),
+(171, 'Brisbane', 0, 29),
+(172, 'Africa', 0, 30),
+(173, 'Asia', 0, 30),
+(174, 'Europa', 0, 30),
+(175, 'Deserto del Gobi', 0, 31),
+(176, 'Deserto di Atacama', 0, 31),
+(177, 'Deserto del Kalahari', 0, 31),
+(178, 'VERO', 0, 32),
+(179, 'Toronto', 0, 33),
+(180, 'Vancouver', 0, 33),
+(181, 'Montreal', 0, 33),
+(182, 'Asia', 0, 34),
+(183, 'Europa', 0, 34),
+(184, 'America del Sud', 0, 34),
+(185, 'Il Reno', 0, 35),
+(186, 'Il Tamigi', 0, 35),
+(187, 'Il Po', 0, 35),
+(188, 'Messico', 0, 36),
+(189, 'Perù', 0, 36),
+(190, 'Cambogia', 0, 36),
+(191, 'San Pietroburgo', 0, 37),
+(192, 'Kiev', 0, 37),
+(193, 'Minsk', 0, 37),
+(194, 'Asia', 0, 38),
+(195, 'Europa', 0, 38),
+(196, 'America del Nord', 0, 38),
+(197, 'FALSO', 0, 39),
+(198, 'Italia', 0, 40),
+(199, 'Spagna', 0, 40),
+(200, 'Germania', 0, 40),
+(201, 'H₂O₂', 0, 41),
+(202, 'CO₂', 0, 41),
+(203, 'CH₄', 0, 41),
+(204, 'Isaac Newton', 0, 42),
+(205, 'Nikola Tesla', 0, 42),
+(206, 'Galileo Galilei', 0, 42),
+(207, 'Oro', 0, 43),
+(208, 'Osmio', 0, 43),
+(209, 'Ossido', 0, 43),
+(210, 'VERO', 0, 44),
+(211, 'Louis Pasteur', 0, 45),
+(212, 'Marie Curie', 0, 45),
+(213, 'Gregor Mendel', 0, 45),
+(214, 'Circa 105.395 km/s', 0, 46),
+(215, 'Circa 350.544 km/s', 0, 46),
+(216, 'Circa 505,809 km/s', 0, 46),
+(217, 'Polmoni', 0, 47),
+(218, 'Fegato', 0, 47),
+(219, 'Cervello', 0, 47),
+(220, 'Albert Einstein', 0, 48),
+(221, 'Galileo Galilei', 0, 48),
+(222, 'James Clerk Maxwell', 0, 48),
+(223, 'FALSO', 0, 49),
+(224, 'Azoto', 0, 50),
+(225, 'Anidride carbonica', 0, 50),
+(226, 'Idrogeno', 0, 50),
+(227, 'Albert Einstein', 0, 51),
+(228, 'Galileo Galilei', 0, 51),
+(229, 'Johannes Kepler', 0, 51),
+(230, 'FALSO', 0, 52),
+(231, 'Louis Pasteur', 0, 53),
+(232, 'James Watson', 0, 53),
+(233, 'Volt', 0, 54),
+(234, 'Ohm', 0, 54),
+(235, 'Watt', 0, 54),
+(236, 'Cuore', 0, 55),
+(237, 'Polmoni', 0, 55),
+(238, 'Cervello', 0, 55),
+(239, 'Thomas Edison', 0, 56),
+(240, 'Nikola Tesla', 0, 56),
+(241, 'Guglielmo Marconi', 0, 56),
+(242, '50°C', 0, 57),
+(243, '75°C', 0, 57),
+(244, '90°C', 0, 57),
+(245, 'Fluoro', 0, 58),
+(246, 'Fosforo', 0, 58),
+(247, 'Francio', 0, 58),
+(248, 'Marie Curie', 0, 59),
+(249, 'Niels Bohr', 0, 59),
+(250, 'Max Planck', 0, 59),
+(251, '52 milioni di km', 0, 60),
+(252, '175,2 milioni di km', 0, 60),
+(253, '200 milioni di km', 0, 60),
+(254, 'Michelangelo', 0, 61),
+(255, 'Raffaello', 0, 61),
+(256, 'Caravaggio', 0, 61),
+(257, 'Impressionismo', 0, 62),
+(258, 'Surrealismo', 0, 62),
+(259, 'Barocco', 0, 62),
+(260, 'VERO', 0, 63),
+(261, 'La Creazione di Adamo', 0, 64),
+(262, 'La Scuola di Atene', 0, 64),
+(263, 'La Nascita di Venere', 0, 64),
+(264, 'Claude Monet', 0, 65),
+(265, 'Paul Cézanne', 0, 65),
+(266, 'Edgar Degas', 0, 65),
+(267, 'FALSO', 0, 66),
+(268, 'Realismo', 0, 67),
+(269, 'Espressionismo', 0, 67),
+(270, 'Cubismo', 0, 67),
+(271, 'Michelangelo', 0, 68),
+(272, 'Donatello', 0, 68),
+(273, 'Antonio Canova', 0, 68),
+(274, 'La Scuola di Atene', 0, 69),
+(275, 'La Nascita di Venere', 0, 69),
+(276, 'Il Bacio', 0, 69),
+(277, 'Salvador Dalí', 0, 70),
+(278, 'Joan Miró', 0, 70),
+(279, 'Marc Chagall', 0, 70),
+(280, 'Cubismo', 0, 71),
+(281, 'Impressionismo', 0, 71),
+(282, 'Barocco', 0, 71),
+(283, 'VERO', 0, 72),
+(284, 'Claude Monet', 0, 73),
+(285, 'Paul Gauguin', 0, 73),
+(286, 'Henri Rousseau', 0, 73),
+(287, 'Edvard Munch', 0, 74),
+(288, 'Giotto', 0, 74),
+(289, 'Egon Schiele', 0, 74),
+(290, 'Surrealismo', 0, 75),
+(291, 'Cubismo', 0, 75),
+(292, 'Impressionismo', 0, 75),
+(293, 'FALSO', 0, 76),
+(294, 'La Scuola di Atene', 0, 77),
+(295, 'Il Giudizio Universale', 0, 77),
+(296, 'La Gioconda', 0, 77),
+(297, 'Leonardo da Vinci', 0, 78),
+(298, 'Michelangelo', 0, 78),
+(299, 'Tiziano', 0, 78),
+(300, 'FALSO', 0, 79),
+(301, 'Michelangelo', 0, 80),
+(302, 'Raffaello', 0, 80),
+(303, 'Caravaggio', 0, 80),
+(304, 'Germania', 0, 81),
+(305, 'Brasile', 0, 81),
+(306, 'Argentina', 0, 81),
+(307, 'Rafael Nadal', 0, 82),
+(308, 'Pete Sampras', 0, 82),
+(309, 'Björn Borg', 0, 82),
+(310, 'Chicago Bulls', 0, 83),
+(311, 'Miami Heat', 0, 83),
+(312, 'San Antonio Spurs', 0, 83),
+(313, 'Chris Froome', 0, 84),
+(314, 'Egan Bernal', 0, 84),
+(315, 'Primož Roglič', 0, 84),
+(316, 'VERO', 0, 85),
+(317, 'Real Madrid', 0, 86),
+(318, 'Bayern Monaco', 0, 86),
+(319, 'Paris Saint-Germain', 0, 86),
+(320, 'Diego Maradona', 0, 87),
+(321, 'Johan Cruijff', 0, 87),
+(322, 'Zinedine Zidane', 0, 87),
+(323, 'Cina', 0, 88),
+(324, 'Regno Unito', 0, 88),
+(325, 'Giappone', 0, 88),
+(326, 'FALSO', 0, 89),
+(327, 'New York Yankees', 0, 90),
+(328, 'Boston Red Sox', 0, 90),
+(329, 'Houston Astros', 0, 90),
+(330, 'Steffi Graf', 0, 91),
+(331, 'Martina Navratilova', 0, 91),
+(332, 'Chris Evert', 0, 91),
+(333, 'Stati Uniti', 0, 92),
+(334, 'Canada', 0, 92),
+(335, 'Germania', 0, 92),
+(336, 'VERO', 0, 93),
+(337, 'Manchester United', 0, 94),
+(338, 'Chelsea', 0, 94),
+(339, 'Arsenal', 0, 94),
+(340, 'Viswanathan Anand', 0, 95),
+(341, 'Fabiano Caruana', 0, 95),
+(342, 'Ian Nepomniachtchi', 0, 95),
+(343, 'VERO', 0, 96),
+(344, 'Marc Márquez', 0, 97),
+(345, 'Valentino Rossi', 0, 97),
+(346, 'Joan Mir', 0, 97),
+(347, 'Chicago Blackhawks', 0, 98),
+(348, 'Boston Bruins', 0, 98),
+(349, 'New York Rangers', 0, 98),
+(350, 'Tiger Woods', 0, 99),
+(351, 'Phil Mickelson', 0, 99),
+(352, 'Rory McIlroy', 0, 99),
+(353, 'FALSO', 0, 100),
+(354, 'Gregor Mendel', 0, 53);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `sfide`
+--
+
+CREATE TABLE `sfide` (
+  `Username1` varchar(10) NOT NULL,
+  `Username2` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utente`
+--
+
+CREATE TABLE `utente` (
+  `Username` varchar(10) NOT NULL,
+  `BadgeEQ` int(2) DEFAULT NULL,
+  `PVinte` int(4) DEFAULT 0,
+  `PGiocate` int(4) DEFAULT 0,
+  `Tema` tinyint(1) DEFAULT 0,
+  `Online` tinyint(1) DEFAULT 0,
+  `Occupato` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`Username`, `BadgeEQ`, `PVinte`, `PGiocate`, `Tema`, `Online`, `Occupato`) VALUES
+('anapaxx', NULL, 6, 10, 0, 0, 0),
+('chiara', NULL, 0, 1, 0, 0, 0),
+('gbry', NULL, 6, 10, 0, 0, 0),
+('sofcaroli', NULL, 5, 10, 0, 0, 0);
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `achievement`
+--
+ALTER TABLE `achievement`
+  ADD PRIMARY KEY (`Username`,`IDBadge`),
+  ADD KEY `IDBadge` (`IDBadge`);
+
+--
+-- Indici per le tabelle `amici`
+--
+ALTER TABLE `amici`
+  ADD PRIMARY KEY (`Username1`,`Username2`),
+  ADD KEY `Username2` (`Username2`);
+
+--
+-- Indici per le tabelle `badge`
+--
+ALTER TABLE `badge`
+  ADD PRIMARY KEY (`IDBadge`);
+
+--
+-- Indici per le tabelle `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`IDCategoria`);
+
+--
+-- Indici per le tabelle `domande`
+--
+ALTER TABLE `domande`
+  ADD PRIMARY KEY (`IDDomanda`);
+
+--
+-- Indici per le tabelle `richieste`
+--
+ALTER TABLE `richieste`
+  ADD PRIMARY KEY (`Username1`,`Username2`),
+  ADD KEY `Username2` (`Username2`);
+
+--
+-- Indici per le tabelle `risposte`
+--
+ALTER TABLE `risposte`
+  ADD KEY `IDDomanda` (`IDDomanda`);
+
+--
+-- Indici per le tabelle `sfide`
+--
+ALTER TABLE `sfide`
+  ADD PRIMARY KEY (`Username1`,`Username2`),
+  ADD KEY `Username2` (`Username2`);
+
+--
+-- Indici per le tabelle `utente`
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`Username`);
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `achievement`
+--
+ALTER TABLE `achievement`
+  ADD CONSTRAINT `achievement_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `utente` (`Username`),
+  ADD CONSTRAINT `achievement_ibfk_2` FOREIGN KEY (`IDBadge`) REFERENCES `badge` (`IDBadge`);
+
+--
+-- Limiti per la tabella `amici`
+--
+ALTER TABLE `amici`
+  ADD CONSTRAINT `amici_ibfk_1` FOREIGN KEY (`Username1`) REFERENCES `utente` (`Username`),
+  ADD CONSTRAINT `amici_ibfk_2` FOREIGN KEY (`Username2`) REFERENCES `utente` (`Username`);
+
+--
+-- Limiti per la tabella `richieste`
+--
+ALTER TABLE `richieste`
+  ADD CONSTRAINT `richieste_ibfk_1` FOREIGN KEY (`Username1`) REFERENCES `utente` (`Username`),
+  ADD CONSTRAINT `richieste_ibfk_2` FOREIGN KEY (`Username2`) REFERENCES `utente` (`Username`);
+
+--
+-- Limiti per la tabella `sfide`
+--
+ALTER TABLE `sfide`
+  ADD CONSTRAINT `sfide_ibfk_1` FOREIGN KEY (`Username1`) REFERENCES `utente` (`Username`),
+  ADD CONSTRAINT `sfide_ibfk_2` FOREIGN KEY (`Username2`) REFERENCES `utente` (`Username`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

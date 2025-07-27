@@ -1,0 +1,347 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+main{
+    padding-bottom: 90px;
+}
+footer {
+    height: 80px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    background: #000000;
+    color: #cccccc;
+}
+/* HOME e parte fissata della navbar */
+.disabled-link { /* Disabilita il link della navbar*/
+    pointer-events: none;
+    cursor: default;
+}
+.homelogo {
+    margin-top: 11px;
+}
+nav {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: rgb(23, 23, 23);
+
+}
+a.honk-uniquifier {     /*font BRAIN BLITZ*/
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 15,
+      "SHLN" 50;
+      font-size: 50px;
+}
+.navbar {
+    justify-content: space-between;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+.logo {
+    height: 80px;
+} 
+img.logo { /* logo nella navbar */
+    height: 70px;
+}
+.nav-item {
+    font-size: 20px;
+}
+/*LINK NAVBAR*/
+.nav-link:hover {
+    color: rgb(0, 255, 255) !important;
+}
+.nav-link.HOME {
+    color: white;
+}
+.nav-link.AMICI {
+    color: #feee6c;
+}
+.nav-link.BADGE {
+    color: #ff885c;
+}
+/*PAGINE*/
+body {
+    background-image: url('../img/sfondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+}
+.no-scrollbar::-webkit-scrollbar { /* toglie la barra di scorrimento*/
+    display: none;
+}
+a.font {
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 15,
+      "SHLN" 50;
+    font-size: 40px;
+}
+div.linea { /* linea verticale della navbar */
+    width: 1px;
+    background-color: #ff8c00;
+    height: 40px;
+}
+.linea2 { /* linea verticale della navbar */
+    margin-top: 3px;
+}
+/* TEMPLATE */
+img.profilo { /* immagine profilo dell'username */
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgb(0, 255, 255); /* Spessore e colore del bordo */
+    padding: 5px; /* Spazio tra l'immagine e il bordo */
+}
+img.premio { /* immagine profilo dell'username */
+    width: auto;
+    height: 70px;
+}
+div.username{ /* username */
+    font-weight: 900px;
+    color: #000000b9;
+    font-family: 'Trebuchet MS', sans-serif;    
+}
+.titoli{ /* titoli home*/  
+    font-size: 37px;
+    font-weight: 200px;
+    color: #000000c4;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+div.riga {
+    /* background: linear-gradient(to bottom, yellow, orange, rgb(239, 135, 153)); */
+    background: radial-gradient(#ffed87, #FF69B4);
+    color: rgb(0, 0, 0);
+    border-right: 10px solid #ffffff ; /* servono per poter inserire il bordo tra le colonne sotto, per omogeneità li ho mesis a tutti */
+    border-left: 10px solid #ffffff;
+    border-radius: 35px;
+    opacity: 95%;
+    padding: 30px;
+}
+div.testo {
+    width: 20%;
+}
+/* STATISTICHE NELLA HOME*/
+.num_stat{
+    font-size: 70px;
+    color: #000000c4;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* NOT FOUND 404*/
+h1.not_found{
+    font-size: 230px; 
+    font-weight: 700px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color: #5f2d2d;   
+    height: 215px
+}
+h2.not_found{
+    font-size: 59px; 
+    font-weight: 700px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color: #5f2d2d;  
+}
+h3.not_found{
+    text-align: center;
+    font-family: 'Trebuchet MS', sans-serif;   
+}
+img.not_found{
+    width: 320px
+}
+/*CATEGORIA*/
+.categoria {
+    font-size: 71px;
+    font-weight: 200px;
+    color: #101010c4;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+button.Storia{
+    background: radial-gradient(rgb(255, 239, 213), rgb(255, 165, 0));
+}
+button.Geografia{
+    background: radial-gradient(rgb(173, 216, 230), rgb(0, 191, 255));
+}
+button.Scienze{
+    background: radial-gradient(rgb(189, 252, 201), rgb(60, 179, 113));
+}
+button.Sport {
+    background: radial-gradient(rgb(255, 228, 196), rgb(255, 69, 0));
+}
+button.Arte{
+    background: radial-gradient(rgb(230, 230, 250), rgb(186, 85, 211));
+}
+button.Megamix{
+    background: linear-gradient(to right,rgb(255, 105, 135),rgb(255, 165, 79),rgb(255, 255, 153),rgb(102, 205, 102),rgb(135, 206, 250) );
+}
+/* MATCHMAKING */
+.gif {
+    width: 200px; 
+}
+.imgGiocatore{ /*immagine giocatori*/
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgb(171, 88, 88); /* Spessore e colore del bordo */
+    padding: 5px; /* Spazio tra l'immagine e il bordo */
+}
+.vs {
+    font-size: 100px;
+    margin-bottom: 35px;
+    font-family: "Honk", system-ui;
+}
+.match-badge {
+    width: 100px;
+    height: auto;
+}
+td.num{
+    width: 15%;
+}
+td{
+    width: 30%;
+    font-size: 20px;
+}
+/*BADGE*/
+.rounded-table{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.td-badge {
+    font-size: auto;
+}
+.ico_badge {
+    height: 70px;
+    width: auto;
+}
+/* TABELLA UTENTI */
+table.table-user {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.bottone{
+    background: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 43px;
+}
+.bottonecategoria{
+    width: 90%;
+    height: 75px;
+    font-family: 'Courier New', monospace;
+}
+/*BOTTONI DOMANDE*/
+bottone:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.corretto {
+    background-color: green !important;
+    cursor: not-allowed;
+    animation: none;
+    color: white;
+}
+.corretto::before { /* inserimento tick sopra al pulsante*/
+    content: "\f00c"; /* Unicode for the check icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    font-size: 20px;
+    color: #ffffff; 
+    margin-right: 1rem;
+}
+.sbagliato {
+    background-color: red !important;
+    cursor: not-allowed;
+    animation: none;
+    color: white;
+}
+.sbagliato::before { /* inserimento cross sopra al pulsante*/
+    content: "\f00d"; /* Unicode per l'icona di croce */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; 
+    font-size: 20px;
+    color: #ffffff; 
+    margin-right: 1rem; 
+}
+
+.spiegazione {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selezionata {
+    border: 3px solid black !important;
+    animation: pulse 1s infinite;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.fas{
+    font-size: 34px;
+}
+.sottotitolo{
+    font-family: 'Trebuchet MS', sans-serif;  
+}   
+.lista_home{
+    list-style:circle;
+    margin-left: 60px;
+}
+.img_domande{
+    width: 250px;
+    height: 250px;
+    padding: 5px; /* Spazio tra l'immagine e il bordo */
+}
+.esito { /* esito della domanda */
+    font-size: 90px;
+    font-family: "Honk", system-ui;
+}
+.user_avv {
+    font-family: 'Trebuchet MS', sans-serif;    
+}
+
+.bg-none{
+    background: none !important;
+}
+div.progress{
+    height: 25px;
+}
+
+.bottoni_home{
+    background: white;
+    color: black;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.bottoni_home:hover, .bottone:hover {
+    background-color: lightcyan;
+    border: 1px solid grey;
+}

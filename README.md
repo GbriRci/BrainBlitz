@@ -1,83 +1,55 @@
 # 🧠BrainBlitz
-L'idea nasce dalla collabolazione con [sofcaroli2](https://github.com/sofcaroli2) e [Anapaxx](https://github.com/Anapaxx) per un esame universitario.
-La primissima idea era quella di creare un gioco a quiz su un server web con Node, Vite, Vue ed Express. 
-Utilizzando un database di supporto avremmo gestito l'accesso degli utenti, i rapporti di amicizia tra di 
-loro e tutte le domande con relative risposte. Non ci siamo discostati troppo dalla nostra idea di partenza, 
-ma abbiamo aggiunto mano a mano delle features per renderlo più piacevole e accattivante. 
-A progetto terminato, gli utenti accedono tramite un username univoco e una password; il profilo può 
-successivamente essere personalizzato con un’immagine. È possibile inviare richieste di amicizia ad altri 
-giocatori conoscendone l’username. Ci saranno più modalità di gioco per rendere sempre nuovo e 
-interessante il sito. Le domande sono divise in categorie in base all'argomento e sono di due tipi: scelta 
-multipla e vero/falso. Ogni domanda possiede una spiegazione aggiuntiva alla risposta corretta. 
-Un partita è composta da 5 domande e i punteggi sono aggiornati in tempo reale alla fine della stessa. 
 
-# 🏹Features per gli utenti
-- Possibilità di registrarsi, fare l’accesso e personalizzare il proprio profilo tramite immagine e 
-username;
-- Visualizzazione delle proprie statistiche personali, come vittorie e partite giocate;
-- Possibilità di creare una propria lista di amici, tramite apposite richieste di amicizia;
-- Badges da sbloccare completando svariate missioni; ad ogni badge corrisponde un gadget che può 
-arricchire ulteriormente il profilo;
-- Più modalità di gioco: allenamento, gioco online e sfida;
-- Tre stati dell’utente: online (l’utente è nella home e può ricevere richieste di sfida), offline (l’utente 
-è uscito dal sito) ed occupato (l’utente è in partita e non può ricevere richieste di sfida).
+**BrainBlitz** è un **gioco a quiz online in tempo reale** sviluppato in collaborazione con [sofcaroli2](https://github.com/sofcaroli2) e [Anapaxx](https://github.com/Anapaxx) come progetto per un esame universitario. L'idea è creare una piattaforma interattiva dove gli utenti possono mettersi alla prova con domande di cultura generale e sfidare amici o altri giocatori.
 
-# 🎮Modalità di gioco
-### Offline
-Una modalità "Allenamento" che permette al giocatore di prendere confidenza con le 
-diverse categorie, che possono essere scelte all’inizio di ogni partita, e di visualizzare le 
-relative spiegazioni senza limite di tempo.
-### Online
-- Una richiesta di gioco verso altri utenti casuali online che permette di 
-mettersi alla prova dopo la modalità di allenamento;
-- Una sfida tra amici creata tramite una richiesta di gioco verso un utente specifico appartenente alla lista di 
-amici.
+Il gioco gestisce l'accesso degli utenti, le relazioni di amicizia, e un vasto database di domande con risposte e spiegazioni dettagliate.
 
-# 🪛Tecnologie 
-- XAMPP (per avviare MySQL e accedere al database) = ci ha permesso di testare il sito localmente 
-e di creare il nostro database con i relativi dati;
-- Node.js = ambiente di sviluppo per creare web server; 
-- npm (Node Package Manager) = gestore di librerie e funzioni di Node;
-- Vite = un build tool per incapsulare Vue all’interno di HTML;
-- Vue.js = framework JS per costruire un'istanza dell’app renderizzata con mount;
-- Vue router = libreria di routing per Vue.js per gestire la navigazione tra pagine;
-- Axios = una libreria per effettuare richieste HTTP e per interagire con API e server;
-- TypeScript = un super set (estensione di JS) che aggiunge i tipi statici (number, string, ...);
-- Express = un framework server-side per web app su Node;
-- Bootstrap e CSS = linguaggi di stile (Bootstrap è un framework CSS) per descrivere l’aspetto di 
-pagine web;
-- Socket = un endpoint per consentire la comunicazione client-server in tempo reale;
-- Visual Studio Code (Live share) = ci ha permesso di lavorare insieme anche quando non eravamo 
-fisicamente nello stesso luogo, in particolare Live Share ha fatto in modo di mostrare file condivisi e 
-cambiamenti apportati in tempo reale.
+## ✨ Caratteristiche Principali
 
-# ⚖️ Accessibilità 
-Per rendere il sito di più facile comprensione a persone con condizioni visive che alterano la 
-percezione del colore, abbiamo inserito nelle varie risposte delle domande icone differenti per 
-simboleggiare le risposte corrette/sbagliate. Precedentemente il messaggio era prima veicolato 
-semplicemente tramite i colori rosso/verde, facilmente confusi da persone affette da daltonismo di 
-tipo deuteranopia e protanopia. Abbiamo inoltre inserito degli alt nelle immagini per una più facile 
-lettura da parte degli screen reader. 
+* **Profilo Utente:** Registrazione, accesso, personalizzazione del profilo con username univoco e immagine.
+* **Social:** Possibilità di inviare e gestire richieste di amicizia.
+* **Statistiche:** Visualizzazione delle proprie vittorie e partite giocate.
+* **Progressione:** Sblocco di badge completando missioni, con gadget per personalizzare il profilo.
+* **Domande:** Divise per categorie, di tipo scelta multipla e vero/falso, con spiegazioni aggiuntive per ogni risposta corretta. Ogni partita è composta da 5 domande con punteggi aggiornati in tempo reale.
+* **Stati Utente:** Online, Offline, Occupato (in partita).
 
-# 🔐Sicurezza
-Per quanto riguarda la sicurezza abbiamo preso in considerazione le criticità derivanti dall’inserimento di 
-autenticazione/registrazione e dall’utilizzo di input utenti nel sito. 
-Per quanto riguarda la memorizzazione delle password e la creazione/memorizzazione di token 
-abbiamo scelto di affidarci al servizio clerk, che offre una suite completa di strumenti per l’autenticazione e 
-registrazione di utenti all’interno di un database esterno. In questo modo i dati rimangono nascosti a coloro 
-che potrebbero voler eseguire attacchi verso gli utenti.  
-Il nostro sito presenta poi un input utente per la ricerca di altri giocatori; questo può essere soggetto a 
-attacchi come Cross-Site Scripting (iniettare script dannosi in pagine web) o SQL injection (inserire 
-codice SQL dannoso nei campi di input). Informandoci abbiamo scoperto che attacchi di Cross-Site 
-Scripting potevano essere evitati tramite DOMPurify, abbiamo quindi deciso di inserirlo nella pagina 
-interessata. 
-Inoltre per evitare SQL injection ci siamo avvalsi di query parametrizzate (ossia che utilizzano dei 
-parametri sostituiti successivamente con i valori reali solo dopo che la query è stata compilata). 
+## 🎮 Modalità di Gioco
 
-# ⬇️Installazione
-1. Clonare la cartella di GitHub: ‘ https://github.com/GbriRci/BrainBlitz ‘ 
-2. Installare le dipendenze tramite il comando ‘ npm i ’ 
-3. Inserire all’interno di XAMPP il database contenuto nella cartella backend/utils/database.txt e 
-avviare Apache e MySQL 
-4. Aprire due terminali nelle cartelle Frontend e BackEnd e lanciare il comando ‘ npm run dev ’ 
-5. Visitare il link: ‘ http://localhost:5173/accesso ’ 
+BrainBlitz offre diverse modalità per un'esperienza di gioco dinamica:
+
+* **Offline (Allenamento):** Permette ai giocatori di familiarizzare con le categorie e le spiegazioni senza limiti di tempo.
+* **Online:**
+    * **Gioca con Utenti Casuali:** Sfida altri utenti online per mettere alla prova le proprie abilità.
+    * **Sfida Amici:** Invia richieste di gioco a utenti specifici dalla propria lista amici.
+
+## 🚀 Tecnologie Utilizzate
+
+Il progetto è stato sviluppato utilizzando una combinazione di tecnologie moderne per il frontend, backend e la gestione del database:
+
+* **Frontend:** `Vite`, `Vue.js` (con `Vue Router`), `Axios`, `Bootstrap` e `CSS`.
+* **Backend:** `Node.js` (con `npm`), `Express.js`, `Socket.IO` (per la comunicazione real-time).
+* **Database:** `MySQL` (gestito tramite `XAMPP`).
+* **Sviluppo:** `TypeScript`, `Visual Studio Code` (con Live Share per la collaborazione).
+
+## 🔒 Sicurezza e Accessibilità
+
+La sicurezza e l'accessibilità sono state priorità nel design:
+
+* **Sicurezza:** Le password e i token sono gestiti tramite il servizio esterno `Clerk` per una robusta autenticazione. Per prevenire attacchi comuni come Cross-Site Scripting (XSS) è stato integrato `DOMPurify`, e per le SQL Injection sono state implementate query parametrizzate.
+* **Accessibilità:** Per migliorare la comprensione per gli utenti con daltonismo, sono state aggiunte icone distinte per indicare risposte corrette/sbagliate (in aggiunta ai colori). Le immagini includono `alt text` per una migliore compatibilità con gli screen reader.
+
+## ⬇️ Installazione e Avvio
+
+Per avviare BrainBlitz localmente:
+
+1.  Clona il repository GitHub: `git clone https://github.com/GbriRci/BrainBlitz.git`
+2.  Naviga nella cartella del progetto e installa le dipendenze: `npm i`
+3.  Configura il database: Inserisci il database contenuto in `backend/utils/database.txt` in `XAMPP` e avvia Apache e MySQL.
+4.  Apri due terminali (uno nella cartella `Frontend` e uno in `Backend`) e lancia il comando: `npm run dev`
+5.  Visita l'applicazione nel browser: `http://localhost:5173/accesso`
+
+## 👥 Collaboratori
+
+Questo progetto è stato sviluppato in collaborazione con:
+* [sofcaroli2](https://github.com/sofcaroli2)
+* [Anapaxx](https://github.com/Anapaxx)

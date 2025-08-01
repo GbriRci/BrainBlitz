@@ -44,7 +44,7 @@ Per avviare BrainBlitz localmente:
 
 1.  Clona il repository GitHub: `git clone https://github.com/GbriRci/BrainBlitz.git`
 2.  Naviga nella cartella del progetto e installa le dipendenze: `npm i`
-3.  Configura il database: Inserisci il database contenuto in `backend/utils/database.txt` in `XAMPP` e avvia Apache e MySQL.
+3.  Configura il database: Inserisci il database contenuto in `backend/src/utils/database.txt` in `XAMPP` e avvia Apache e MySQL.
 4.  Apri due terminali (uno nella cartella `Frontend` e uno in `Backend`) e lancia il comando: `npm run dev`
 5.  Visita l'applicazione nel browser: `http://localhost:5173/accesso`
 

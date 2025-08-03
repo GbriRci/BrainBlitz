@@ -55,4 +55,4 @@ Questo progetto è stato sviluppato in collaborazione con:
 * [Anapaxx](https://github.com/Anapaxx)
 
 ## Scarica la relazione completa: 
-[https://github.com/GbriRci/BrainBlitz/blob/main/BrainBlitz_relazione.pdf](BrainBlitz_relazione.pdf)
+[BrainBlitz_relazione.pdf](https://github.com/GbriRci/BrainBlitz/blob/main/BrainBlitz_relazione.pdf)
